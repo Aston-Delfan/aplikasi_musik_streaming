@@ -26,3 +26,24 @@ class LaguDuplikatError(MusikStreamingError):
         self.playlist = playlist
         self.judul = judul
         super().__init__(f"Lagu '{judul}' sudah ada di playlist {playlist}")
+
+
+
+class BatasSkipHabisError(MusikStreamingError):
+    def __init__(self, username, batas):
+        self.username = username
+        self.batas = batas
+        super().__init__("Batas skip habis, upgrade ke Premium")
+
+
+class UsernameKosongError(MusikStreamingError):
+    def __init__(self, username):
+        self.username = username
+        super().__init__("Username tidak boleh kosong")
+
+
+class UnduhanDuplikatError(MusikStreamingError):
+    def __init__(self, username, judul):
+        self.username = username
+        self.judul = judul
+        super().__init__(f"Audio '{judul}' sudah diunduh oleh {username}")
