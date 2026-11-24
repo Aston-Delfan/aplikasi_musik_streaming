@@ -6,7 +6,7 @@ class Audio:
 
     def __init__(self, judul, durasi):
         self._judul = judul
-        self._durasi = durasi
+        self.durasi = durasi
         Audio.jumlah_audio += 1
 
     @property
@@ -20,7 +20,7 @@ class Audio:
     @durasi.setter
     def durasi(self, nilai):
         if nilai <= 0:
-            raise DurasiTidakValidError()
+            raise DurasiTidakValidError(nilai)
         self._durasi = nilai
 
     @staticmethod

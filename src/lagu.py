@@ -17,8 +17,8 @@ class Lagu(Audio):
             judul, artis, waktu = teks.split("-")
             menit, detik = waktu.split(":")
             return cls(judul, int(menit) * 60 + int(detik), artis)
-        except ValueError:
-            raise FormatTeksLaguError(teks) from None
+        except ValueError as e:
+            raise FormatTeksLaguError(teks) from e
 
     def putar(self):
         return f"Memutar lagu {self.judul} oleh {self._artis}"

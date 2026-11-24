@@ -9,3 +9,6 @@ class EpisodePodcast(Audio):
 
     def putar(self):
         return f"Memutar podcast {self.judul} eps. {self._nomor} bersama {self._host}"
+
+    def __str__(self):
+        return f"{self.judul} bersama {self._host} (eps. {self._nomor}, {Audio.format_durasi(self.durasi)})"
