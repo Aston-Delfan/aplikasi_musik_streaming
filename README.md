@@ -45,6 +45,44 @@ Aplikasi musik streaming sederhana. `Audio` adalah class induk dengan turunan `L
 ```
 python src/main.py
 ```
+Contoh output:
+```
+=== PLAYLIST ===
+Berhasil menambahkan Iqro
+[LOG] percobaan tambah lagu Iqro
+Gagal tambah lagu: Lagu 'Senja di Kuta' sudah ada di playlist Lagu Santai
+[LOG] percobaan tambah lagu Senja di Kuta
+Playlist Lagu Santai: 3 lagu, 10:58
+
+=== PENGGUNA FREE ===
+[Iklan] Memutar lagu Senja di Kuta oleh Arya
+ibal melewati lagu (sisa skip: 5)
+ibal melewati lagu (sisa skip: 4)
+ibal melewati lagu (sisa skip: 3)
+ibal melewati lagu (sisa skip: 2)
+ibal melewati lagu (sisa skip: 1)
+ibal melewati lagu (sisa skip: 0)
+Gagal skip: Batas skip habis, upgrade ke Premium
+
+=== PENGGUNA PREMIUM ===
+Memutar podcast Ngobrol Teknologi eps. 12 bersama Budi [320 kbps]
+Langit Biru berhasil diunduh
+Gagal unduh: Audio 'Langit Biru' sudah diunduh oleh sari
+
+=== VALIDASI DAN PERBANDINGAN ===
+Gagal ubah durasi: Durasi harus lebih dari 0 detik, diberikan -10
+Gagal membuat lagu: Format teks lagu 'Langit Biru-Dewi' tidak valid, gunakan judul-artis-menit:detik
+Penyebab: not enough values to unpack (expected 3, got 2)
+Gagal membuat playlist: Nama playlist tidak boleh kosong
+Gagal membuat pengguna: Username tidak boleh kosong
+lagu1 == lagu3: True
+lagu1 == lagu2: False
+Jumlah audio: 6
+MRO Premium: PenggunaPremium -> DownloadMixin -> Pengguna -> object
+Ngobrol Teknologi bersama Budi (eps. 12, 30:00)
+Playlist Lagu Santai: 3 lagu, 10:58
+Senja di Kuta oleh Arya (3:35)
+```
 
 ## Pembagian Peran
 | Anggota | Peran |

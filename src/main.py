@@ -1,6 +1,15 @@
 from audio import Audio
 from episode_podcast import EpisodePodcast
-from exceptions import DurasiTidakValidError
+from exceptions import (
+    BatasSkipHabisError,
+    DurasiTidakValidError,
+    FormatTeksLaguError,
+    LaguDuplikatError,
+    MusikStreamingError,
+    NamaPlaylistKosongError,
+    UnduhanDuplikatError,
+    UsernameKosongError,
+)
 from lagu import Lagu
 from pengguna import PenggunaFree, PenggunaPremium
 
@@ -21,22 +30,57 @@ def main():
     santai.tambah_lagu(lagu2)
 
     print("=== PLAYLIST ===")
-    print(f"Tambah lagu duplikat: {santai.tambah_lagu(lagu3)}")
+    for lagu in [lagu4, lagu3]:
+        try:
+            santai.tambah_lagu(lagu)
+        except LaguDuplikatError as e:
+            print(f"Gagal tambah lagu: {e}")
+        except MusikStreamingError as e:
+            print(f"Gagal: {e}")
+        else:
+            print(f"Berhasil menambahkan {lagu.judul}")
+        finally:
+            print(f"[LOG] percobaan tambah lagu {lagu.judul}")
     print(santai)
 
     print("\n=== PENGGUNA FREE ===")
     print(free.putar(lagu1))
-    print(free.skip())
+    for _ in range(PenggunaFree.BATAS_SKIP + 1):
+        try:
+            print(free.skip())
+        except BatasSkipHabisError as e:
+            print(f"Gagal skip: {e}")
 
     print("\n=== PENGGUNA PREMIUM ===")
     print(premium.putar(podcast))
     print(premium.unduh(lagu2))
+    try:
+        premium.unduh(lagu2)
+    except UnduhanDuplikatError as e:
+        print(f"Gagal unduh: {e}")
 
     print("\n=== VALIDASI DAN PERBANDINGAN ===")
     try:
         lagu2.durasi = -10
     except DurasiTidakValidError as e:
         print(f"Gagal ubah durasi: {e}")
+
+    try:
+        Lagu.dari_teks("Langit Biru-Dewi")
+    except FormatTeksLaguError as e:
+        print(f"Gagal membuat lagu: {e}")
+        print(f"Penyebab: {e.__cause__}")
+
+    try:
+        premium.buat_playlist("   ")
+    except NamaPlaylistKosongError as e:
+        print(f"Gagal membuat playlist: {e}")
+
+    try:
+        PenggunaFree("   ")
+    except UsernameKosongError as e:
+        print(f"Gagal membuat pengguna: {e}")
+
     print(f"lagu1 == lagu3: {lagu1 == lagu3}")
     print(f"lagu1 == lagu2: {lagu1 == lagu2}")
     print(f"Jumlah audio: {Audio.jumlah_audio}")
