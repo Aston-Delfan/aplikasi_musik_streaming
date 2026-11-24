@@ -1,10 +1,10 @@
 from audio import Audio
-from exceptions import NamaPlaylistKosongError
+from exceptions import LaguDuplikatError, NamaPlaylistKosongError
 
 
 class Playlist:
     def __init__(self, nama):
-        self._nama = nama
+        self.nama = nama
         self._daftar_lagu = []
 
     @property
@@ -14,14 +14,13 @@ class Playlist:
     @nama.setter
     def nama(self, nilai):
         if not nilai.strip():
-            raise NamaPlaylistKosongError()
+            raise NamaPlaylistKosongError(nilai)
         self._nama = nilai
 
     def tambah_lagu(self, lagu):
         if lagu in self._daftar_lagu:
-            return False
+            raise LaguDuplikatError(self._nama, lagu.judul)
         self._daftar_lagu.append(lagu)
-        return True
 
     def __str__(self):
         total = sum(lagu.durasi for lagu in self._daftar_lagu)
