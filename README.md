@@ -20,7 +20,7 @@ Aplikasi musik streaming sederhana. `Audio` adalah class induk dengan turunan `L
 | Audio yang sama tidak boleh diunduh dua kali | `DownloadMixin.unduh` | `UnduhanDuplikatError` |
 
 ## Class Diagram Revisi
-![Class Diagram](docs/class-diagram.png)
+![Class Diagram](docs/class_diagram.png)
 
 ## Daftar Custom Exception
 | Nama | Class induk | Atribut konteks | Kapan dimunculkan | Method | Penanganan |
@@ -87,6 +87,6 @@ Senja di Kuta oleh Arya (3:35)
 ## Pembagian Peran
 | Anggota | Peran |
 |---|---|
-| Anggota 1 | `exceptions.py` (base), `audio.py`, `lagu.py`, `episode_podcast.py`, class diagram |
-| Anggota 2 | `playlist.py`, README |
-| Anggota 3 | `pengguna.py`, `main.py`, output program |
+| Aston (2501020078) | `exceptions.py` (base), `audio.py`, `lagu.py`, `episode_podcast.py`, class diagram |
+| Ichiro (2501020067) | `playlist.py`, README |
+| Iqbal (2501020082) | `pengguna.py`, `main.py`, output program |
