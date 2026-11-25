@@ -1,8 +1,11 @@
-# aplikasi_musik_streaming
+## APLIKASI MUSIK STREAMING
 
 ## Identitas
-- Nama kelompok: (isi)
-- Anggota: (isi nama dan NIM seluruh anggota)
+- Nama kelompok: Kelompok Warung
+- Anggota: 
+    1. Antonius Aston Delfan (2501020078)
+    2. ⁠I Wayan Farrel Ichiro (2501020067)
+    3. ⁠Muhamad Iqbal Ar'rayyan (2501020082)
 - Studi kasus UTS: Aplikasi Musik Streaming
 
 ## Deskripsi Sistem
